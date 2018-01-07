@@ -622,6 +622,8 @@ SIGNAL (TIMER3_COMPA_vect)
 This function sets the OCR1A compare counter  to get the next interrupt
 at delay ticks measured from the last interrupt. delay must be << 2^24
 */
+long __attribute__((used)) stepperWait = 0;
+
 inline void setTimer(uint32_t delay)
 {
     __asm__ __volatile__ (
@@ -675,7 +677,6 @@ inline void setTimer(uint32_t delay)
 }
 
 volatile uint8_t insideTimer1 = 0;
-long stepperWait = 0;
 /** \brief Timer interrupt routine to drive the stepper motors.
 */
 ISR(TIMER1_COMPA_vect)
