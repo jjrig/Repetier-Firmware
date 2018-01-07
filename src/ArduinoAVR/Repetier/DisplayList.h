@@ -88,6 +88,7 @@ void uiCheckSlowKeys(uint16_t &action) {}
 #define UI_ENCODER_B           37
 #define UI_ENCODER_CLICK       31
 #define UI_RESET_PIN           41
+
 #else  // Smartcontroller
 
 #if MOTHERBOARD == 701 // Megatronics v2.0
@@ -319,6 +320,27 @@ void uiCheckSlowKeys(uint16_t &action) {}
 #define UI_RESET_PIN -1
 #define UI_INVERT_MENU_DIRECTION 1
 
+#elif MOTHERBOARD == 63 // Melzi
+
+#undef BEEPER_PIN
+#define BEEPER_PIN             27
+#define UI_DISPLAY_RS_PIN      17
+#define UI_DISPLAY_RW_PIN      -1
+#define UI_DISPLAY_ENABLE_PIN  16
+#define UI_DISPLAY_D0_PIN      -1
+#define UI_DISPLAY_D1_PIN      -1
+#define UI_DISPLAY_D2_PIN      -1
+#define UI_DISPLAY_D3_PIN      -1
+#define UI_DISPLAY_D4_PIN      11
+#define UI_DISPLAY_D5_PIN      -1
+#define UI_DISPLAY_D6_PIN      -1
+#define UI_DISPLAY_D7_PIN      -1
+#define UI_ENCODER_A           29
+#define UI_ENCODER_B           30
+#define UI_ENCODER_CLICK       28
+#define UI_RESET_PIN           10
+#define SDCARDDETECT          -1
+
 #else  // RAMPS
 
 #undef BEEPER_PIN
@@ -338,8 +360,11 @@ void uiCheckSlowKeys(uint16_t &action) {}
 #define UI_ENCODER_B           31
 #define UI_ENCODER_CLICK       35
 #define UI_RESET_PIN           41
+
 #endif
+
 #endif // smartcontroller
+
 #define UI_DELAYPERCHAR 50
 #if FEATURE_CONTROLLER == CONTROLLER_BAM_DICE_DUE
 #define UI_ENCODER_SPEED 2

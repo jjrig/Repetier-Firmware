@@ -81,7 +81,7 @@
 #define EXT0_Y_OFFSET 0
 #define EXT0_Z_OFFSET 0
 #define EXT0_STEPS_PER_MM 100
-#define EXT0_TEMPSENSOR_TYPE 14
+#define EXT0_TEMPSENSOR_TYPE 13
 #define EXT0_TEMPSENSOR_PIN TEMP_0_PIN
 #define EXT0_HEATER_PIN HEATER_0_PIN
 #define EXT0_STEP_PIN ORIG_E0_STEP_PIN
@@ -469,7 +469,7 @@ WARNING: Servos can draw a considerable amount of current. Make sure your system
 #define FAN_KICKSTART_TIME  200
 #define MAX_FAN_PWM 255
 
-        #define FEATURE_WATCHDOG 1
+#define FEATURE_WATCHDOG 0
 
 // #################### Z-Probing #####################
 
@@ -564,7 +564,7 @@ WARNING: Servos can draw a considerable amount of current. Make sure your system
 #define UI_KEY_FIRST_REPEAT 500
 #define UI_KEY_REDUCE_REPEAT 50
 #define UI_KEY_MIN_REPEAT 50
-#define FEATURE_BEEPER 1
+#define FEATURE_BEEPER 0
 #define CASE_LIGHTS_PIN -1
 #define CASE_LIGHT_DEFAULT_ON 1
 #define UI_START_SCREEN_DELAY 1000
@@ -588,8 +588,10 @@ Values must be in range 1..255
 #define NUM_MOTOR_DRIVERS 0
 
 #define CUSTOM_LOGO
-#define LOGO_WIDTH  88
-#define LOGO_HEIGHT 44
+#define LOGO_WIDTH  1
+#define LOGO_HEIGHT 1
+
+#define LOGO_BITMAP const unsigned char logo[] PROGMEM = {0xFF};
 
 // Non-inverted
 /*
@@ -629,6 +631,7 @@ Values must be in range 1..255
 */
 
 // Inverted
+/*
 #define LOGO_BITMAP const unsigned char logo[] PROGMEM = {\
 0x3F, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFC, 0x7F, 0xFF, 0xFF, 0xFF, 0xFF,\
 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFE, 0xF1, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,\
@@ -662,6 +665,7 @@ Values must be in range 1..255
 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFE, 0x3F, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,\
 0xFF, 0xFF, 0xFF, 0xFC\
 };
+*/
 
 #endif
 
@@ -696,7 +700,7 @@ Values must be in range 1..255
             "pidDriveMin": 40,
             "pidDriveMax": 230,
             "pidMax": 255,
-            "sensorType": 14,
+            "sensorType": 13,
             "sensorPin": "TEMP_0_PIN",
             "heaterPin": "HEATER_0_PIN",
             "maxFeedrate": 50,

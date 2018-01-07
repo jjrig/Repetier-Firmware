@@ -545,6 +545,8 @@ const UIMenu name PROGMEM = {5,action,5,name ## _entries};
 #undef SDCARDDETECT
 #if MOTHERBOARD == 37 || MOTHERBOARD  == 414
 #define SDCARDDETECT ORIG_SDCARDDETECT
+#elif MOTHERBOARD == 63 // Melzi
+#define SDCARDDETECT -1
 #else
 #define SDCARDDETECT 49
 #endif
