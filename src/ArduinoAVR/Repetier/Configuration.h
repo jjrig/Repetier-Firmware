@@ -104,8 +104,8 @@
 #define EXT0_PID_I 2
 #define EXT0_PID_D 40
 #define EXT0_PID_MAX 255
-#define EXT0_ADVANCE_K 0
-#define EXT0_ADVANCE_L 0
+#define EXT0_ADVANCE_K 1
+#define EXT0_ADVANCE_L 1
 #define EXT0_ADVANCE_BACKLASH_STEPS 0
 #define EXT0_WAIT_RETRACT_TEMP 150
 #define EXT0_WAIT_RETRACT_UNITS 0
@@ -370,8 +370,8 @@ It also can add a delay to wait for spindle to run on full speed.
 #define Z3_DIR_PIN    ORIG_E2_DIR_PIN
 #define Z3_ENABLE_PIN ORIG_E2_ENABLE_PIN
 #define FEATURE_DITTO_PRINTING 0
-#define USE_ADVANCE 0
-#define ENABLE_QUADRATIC_ADVANCE 0
+#define USE_ADVANCE 1
+#define ENABLE_QUADRATIC_ADVANCE 1
 
 
 // ################# Misc. settings ##################
@@ -666,8 +666,8 @@ Values must be in range 1..255
             "pidP": 7,
             "pidI": 2,
             "pidD": 40,
-            "advanceK": 0,
-            "advanceL": 0,
+            "advanceK": 1,
+            "advanceL": 1,
             "waitRetractTemp": 150,
             "waitRetractUnits": 0,
             "waitRetract": 0,
@@ -799,8 +799,8 @@ Values must be in range 1..255
     "sendWaits": "1",
     "ackWithLineNumber": "1",
     "killMethod": 1,
-    "useAdvance": "0",
-    "useQuadraticAdvance": "0",
+    "useAdvance": "1",
+    "useQuadraticAdvance": "1",
     "powerInverting": 0,
     "mirrorX": 0,
     "mirrorXMotor": {
