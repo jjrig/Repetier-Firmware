@@ -1,6 +1,4 @@
-- Missing driver for Arduino IDE
-
-- Currently missing math.h - I think it was a dependency that Arduino automatically resolved?
+Remember to load/reset EEPROM correctly or your configuration.h modifications may be ignored.
 
 **IMPORTANT!**
 

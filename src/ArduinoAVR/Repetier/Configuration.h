@@ -81,7 +81,7 @@
 #define EXT0_X_OFFSET 0
 #define EXT0_Y_OFFSET 0
 #define EXT0_Z_OFFSET 0
-#define EXT0_STEPS_PER_MM 320
+#define EXT0_STEPS_PER_MM 200
 #define EXT0_TEMPSENSOR_TYPE 8
 #define EXT0_TEMPSENSOR_PIN TEMP_0_PIN
 #define EXT0_HEATER_PIN HEATER_0_PIN
@@ -562,7 +562,7 @@ WARNING: Servos can draw a considerable amount of current. Make sure your system
 #define UI_DISABLE_AUTO_PAGESWITCH 1
 #define UI_AUTORETURN_TO_MENU_AFTER 60000
 #define FEATURE_UI_KEYS 0
-#define UI_ENCODER_SPEED 1
+#define UI_ENCODER_SPEED 2
 #define UI_REVERSE_ENCODER 1
 #define UI_KEY_BOUNCETIME 10
 #define UI_KEY_FIRST_REPEAT 500
@@ -704,8 +704,8 @@ Values must be in range 1..255
     "baudrate": 250000,
     "bluetoothSerial": -1,
     "bluetoothBaudrate": 115200,
-    "xStepsPerMM": 80,
-    "yStepsPerMM": 80,
+    "xStepsPerMM": 160,
+    "yStepsPerMM": 160,
     "zStepsPerMM": 800,
     "xInvert": "1",
     "x2Invert": 0,
@@ -743,7 +743,7 @@ Values must be in range 1..255
             "waitRetractTemp": 150,
             "waitRetractUnits": 0,
             "waitRetract": 0,
-            "stepsPerMM": 320,
+            "stepsPerMM": 200,
             "coolerPin": -1,
             "coolerSpeed": 255,
             "selectCommands": "",
@@ -933,7 +933,7 @@ Values must be in range 1..255
     "uiDisablePageswitch": "1",
     "uiAutoReturnAfter": 60000,
     "featureKeys": "0",
-    "uiEncoderSpeed": 1,
+    "uiEncoderSpeed": 2,
     "uiReverseEncoder": "1",
     "uiKeyBouncetime": 10,
     "uiKeyFirstRepeat": 500,
