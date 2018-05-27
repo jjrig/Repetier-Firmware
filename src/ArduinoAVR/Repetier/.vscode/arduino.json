@@ -2,6 +2,6 @@
     "sketch": "Repetier.ino",
     "board": "arduino:avr:mega",
     "configuration": "cpu=atmega2560",
-    "output": "../out",
+    "output": "./bin",
     "port": "COM1"
 }
