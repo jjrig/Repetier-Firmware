@@ -410,8 +410,8 @@ STEPPER_CURRENT_CONTROL
 #define ORIG_E1_ENABLE_PIN       30
 
 #define SDPOWER            -1
-#define SDSS               53
-#define ORIG_SDCARDDETECT 	    49
+#define SDSS               -1 // 53 - Disabled (TMC2130 data pin)
+#define ORIG_SDCARDDETECT  -1 // 49 - Disabled (TMC2130 data pin)
 
 #define LED_PIN            13
 #define ORIG_FAN_PIN            9
@@ -1004,32 +1004,32 @@ STEPPER_CURRENT_CONTROL
 #define ORIG_E0_ENABLE_PIN   14
 
 //29 on Melzi1284p A2
-#define PROBE_PIN            -1    
+#define PROBE_PIN            -1
 
-#define LED_PIN              -1
+#define LED_PIN              27
 
 #define ORIG_FAN_PIN          4
 
 #define ORIG_PS_ON_PIN       -1
 
 // (extruder)
-#define HEATER_0_PIN         13 
+#define HEATER_0_PIN         13
 #define HEATER_2_PIN         -1
 // bed was 10 in older versions,but 12 seems to be correct
-#define HEATER_1_PIN         12 
+#define HEATER_1_PIN         12
 
 #define ORIG_X_ENABLE_PIN    14
 #define ORIG_Y_ENABLE_PIN    14
 #define ORIG_Z_ENABLE_PIN    26
 
 // MUST USE ANALOG INPUT NUMBERING NOT DIGITAL OUTPUT NUMBERING!!!!!!!!! (pin 33 extruder)
-#define TEMP_0_PIN            7   
+#define TEMP_0_PIN            7
 // MUST USE ANALOG INPUT NUMBERING NOT DIGITAL OUTPUT NUMBERING!!!!!!!!! (pin 34 bed)
-#define TEMP_1_PIN            6   
+#define TEMP_1_PIN            6
 #define TEMP_2_PIN           -1
 #define SDPOWER              -1
 // 31 http://reprap.org/wiki/Melzi#Melzi_Arduino_Pin_Numbers says 31, schematic show pin 37 = PA0 which is arduino pin 31!
-#define SDSS                 31 
+#define SDSS                 31
 #define SCK_PIN               7
 #define MISO_PIN              6
 #define MOSI_PIN              5

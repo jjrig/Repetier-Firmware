@@ -4,12 +4,22 @@
             "name": "Win32",
             "browse": {
                 "path": [
+                    "C:\\Users\\jason\\OneDrive\\Documents\\Arduino\\libraries\\TMC2130Stepper\\src",
+                    "C:\\Program Files (x86)\\Arduino\\hardware\\tools\\avr\\avr\\include",
+                    "C:\\Program Files (x86)\\Arduino\\hardware\\arduino\\avr\\cores\\arduino",
+                    "C:\\Program Files (x86)\\Arduino\\hardware\\tools\\avr\\lib\\gcc\\avr\\4.9.2\\include",
+                    "C:\\Program Files (x86)\\Arduino\\hardware\\arduino\\avr\\variants\\mega",
                     "${workspaceFolder}"
                 ],
-                "limitSymbolsToIncludedHeaders": true
+                "limitSymbolsToIncludedHeaders": false
             },
             "includePath": [
-                "${workspaceFolder}/**"
+                "C:\\Users\\jason\\OneDrive\\Documents\\Arduino\\libraries\\TMC2130Stepper\\src",
+                "C:\\Program Files (x86)\\Arduino\\hardware\\tools\\avr\\avr\\include",
+                "C:\\Program Files (x86)\\Arduino\\hardware\\tools\\avr\\lib\\gcc\\avr\\4.9.2\\include",
+                "C:\\Program Files (x86)\\Arduino\\hardware\\arduino\\avr\\cores\\arduino",
+                "C:\\Program Files (x86)\\Arduino\\hardware\\arduino\\avr\\variants\\mega",
+                "${workspaceFolder}"
             ],
             "defines": [
                 "_DEBUG",
