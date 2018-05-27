@@ -79,12 +79,7 @@ All known Arduino boards use 64. This value is needed for the extruder timing. *
 #ifdef EXTERNALSERIAL
 #define SERIAL_RX_BUFFER_SIZE 128
 #endif
-// #if defined(ARDUINO) && ARDUINO >= 100
 #include "Arduino.h"
-// #else
-// #include "WProgram.h"
-// #define COMPAT_PRE1
-// #endif
 #if CPU_ARCH==ARCH_AVR
 #include "fastio.h"
 #else

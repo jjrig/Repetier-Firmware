@@ -16,3 +16,9 @@ See https://github.com/teemuatlut/TMC2130Stepper
 `{
     "C_Cpp.intelliSenseEngine": "Tag Parser"
 }`
+
+Configuration
+
+- Most configuration is done in Configuration.h
+- If you want to use Marlin-style TMC2130 controls, uncomment this line in Printer.cpp
+`#define USE_MARLIN_CONFIG`

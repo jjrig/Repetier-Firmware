@@ -1796,7 +1796,7 @@ void Printer::homeZAxis() { // Cartesian homing
 #endif
 #if Z_HOME_DIR < 0 && Z_PROBE_PIN == Z_MIN_PIN && FEATURE_Z_PROBE
 #ifdef Z_PROBE_RUN_AFTER_EVERY_PROBE
-GCode::executeFString(PSTR(Z_PROBE_RUN_AFTER_EVERY_PROBE));
+        GCode::executeFString(PSTR(Z_PROBE_RUN_AFTER_EVERY_PROBE));
 #endif
 #endif
         PrintLine::moveRelativeDistanceInSteps(0, 0, axisStepsPerMM[Z_AXIS] * 2 * ENDSTOP_Z_BACK_MOVE * Z_HOME_DIR, 0, homingFeedrate[Z_AXIS] / ENDSTOP_Z_RETEST_REDUCTION_FACTOR, true, true);
@@ -2640,19 +2640,43 @@ void Printer::stopPrint() {
 	}
 }
 
+// #define USE_MARLIN_CONFIG
+
+#if defined(USE_MARLIN_CONFIG)
+    #define R_SENSE           0.11  // R_sense resistor for SilentStepStick2130
+    #define HOLD_MULTIPLIER    0.5  // Scales down the holding current from run current
+    #define INTERPOLATE       true  // Interpolate X/Y/Z_MICROSTEPS to 256
+    #define MICROSTEPS          16  // Number of microsteps
+#endif
+
 #if defined(DRV_TMC2130)
     void Printer::configTMC2130(TMC2130Stepper* tmc_driver, bool tmc_stealthchop, int8_t tmc_sgt,
       uint8_t tmc_pwm_ampl, uint8_t tmc_pwm_grad, bool tmc_pwm_autoscale, uint8_t tmc_pwm_freq) {
         while(!tmc_driver->stst());                     // Wait for motor stand-still
-        tmc_driver->begin();                            // Initiate pins and registeries
-        tmc_driver->I_scale_analog(true);               // Set current reference source
-        tmc_driver->interpolate(true);                  // Set internal microstep interpolation
-        tmc_driver->pwm_ampl(tmc_pwm_ampl);             // Chopper PWM amplitude
-        tmc_driver->pwm_grad(tmc_pwm_grad);             // Velocity gradient for chopper PWM amplitude
-        tmc_driver->pwm_autoscale(tmc_pwm_autoscale);   // Chopper PWM autoscaling
-        tmc_driver->pwm_freq(tmc_pwm_freq);             // Chopper PWM frequency selection
-        tmc_driver->stealthChop(tmc_stealthchop);       // Enable extremely quiet stepping
-        tmc_driver->sg_stall_value(tmc_sgt);            // StallGuard sensitivity
+
+        #if defined(USE_MARLIN_CONFIG)
+            tmc_driver->begin();
+            tmc_driver->setCurrent(tmc_driver->getCurrent(), R_SENSE, HOLD_MULTIPLIER);
+            tmc_driver->microsteps(MICROSTEPS);
+            tmc_driver->blank_time(24);
+            tmc_driver->off_time(5); // Only enables the driver if used with stealthChop
+            tmc_driver->interpolate(INTERPOLATE);
+            tmc_driver->power_down_delay(128); // ~2s until driver lowers to hold current
+            tmc_driver->hysterisis_start(3);
+            tmc_driver->hysterisis_end(2);
+            tmc_driver->diag1_active_high(1); // For sensorless homing
+            tmc_driver->GSTAT(); // Clear GSTAT
+        #else
+            tmc_driver->begin();                            // Initiate pins and registeries
+            tmc_driver->I_scale_analog(true);               // Set current reference source
+            tmc_driver->interpolate(true);                  // Set internal microstep interpolation
+            tmc_driver->pwm_ampl(tmc_pwm_ampl);             // Chopper PWM amplitude
+            tmc_driver->pwm_grad(tmc_pwm_grad);             // Velocity gradient for chopper PWM amplitude
+            tmc_driver->pwm_autoscale(tmc_pwm_autoscale);   // Chopper PWM autoscaling
+            tmc_driver->pwm_freq(tmc_pwm_freq);             // Chopper PWM frequency selection
+            tmc_driver->stealthChop(tmc_stealthchop);       // Enable extremely quiet stepping
+            tmc_driver->sg_stall_value(tmc_sgt);            // StallGuard sensitivity
+        #endif
     }
 
 #if defined(SENSORLESS_HOMING)
