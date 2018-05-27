@@ -41,7 +41,6 @@
 #include "pins.h"
 
 // ################## EDIT THESE SETTINGS MANUALLY ################
-#define MICROSTEP_MODES { 16,16,16,16,16,16 } // [1,2,4,8,16]
 
 // ################ END MANUAL SETTINGS ##########################
 
@@ -66,8 +65,8 @@
 #define MIXING_EXTRUDER 0
 
 #define DRIVE_SYSTEM 0
-#define XAXIS_STEPS_PER_MM 80
-#define YAXIS_STEPS_PER_MM 80
+#define XAXIS_STEPS_PER_MM 160
+#define YAXIS_STEPS_PER_MM 160
 #define ZAXIS_STEPS_PER_MM 800
 #define EXTRUDER_FAN_COOL_TEMP 50
 #define PDM_FOR_EXTRUDER 1
@@ -276,7 +275,6 @@ It also can add a delay to wait for spindle to run on full speed.
 #define MIN_HARDWARE_ENDSTOP_Y2 false
 #define MAX_HARDWARE_ENDSTOP_X2 false
 #define MAX_HARDWARE_ENDSTOP_Y2 false
-#define MINMAX_HARDWARE_ENDSTOP_Z2 false
 #define X2_MIN_PIN -1
 #define X2_MAX_PIN -1
 #define Y2_MIN_PIN -1
@@ -319,9 +317,9 @@ It also can add a delay to wait for spindle to run on full speed.
 #define DISABLE_Y 0
 #define DISABLE_Z 0
 #define DISABLE_E 0
-#define INVERT_X_DIR 0
+#define INVERT_X_DIR 1
 #define INVERT_X2_DIR 0
-#define INVERT_Y_DIR 0
+#define INVERT_Y_DIR 1
 #define INVERT_Y2_DIR 0
 #define INVERT_Z_DIR 0
 #define INVERT_Z2_DIR 0
@@ -336,6 +334,9 @@ It also can add a delay to wait for spindle to run on full speed.
 #define X_MIN_POS 0
 #define Y_MIN_POS 0
 #define Z_MIN_POS 0
+#define PARK_POSITION_X 0
+#define PARK_POSITION_Y 10
+#define PARK_POSITION_Z_RAISE 10
 
 
 #define DISTORTION_CORRECTION 0
@@ -432,61 +433,9 @@ It also can add a delay to wait for spindle to run on full speed.
 #define Z4_DIR_PIN    ORIG_E3_DIR_PIN
 #define Z4_ENABLE_PIN ORIG_E3_ENABLE_PIN
 #define FEATURE_DITTO_PRINTING 0
-#define USE_ADVANCE 1
-#define ENABLE_QUADRATIC_ADVANCE 1
+#define USE_ADVANCE 0
+#define ENABLE_QUADRATIC_ADVANCE 0
 
-#define DRV_TMC2130
-
-// Uncomment if you use the stall guard for homing. Only for cartesian printers and xy direction
-
-// The drivers with set CS pin will be used, all others are normal step/dir/enable drivers
-#define TMC2130_X_CS_PIN 53
-#define TMC2130_Y_CS_PIN 49
-#define TMC2130_Z_CS_PIN -1
-#define TMC2130_EXT0_CS_PIN -1
-#define TMC2130_EXT1_CS_PIN -1
-#define TMC2130_EXT2_CS_PIN -1
-
-// Per-axis current setting in mA { X, Y, Z, E0, E1, E2}
-#define MOTOR_CURRENT { 700,700,700,700,700,700 }
-
-/**  Global settings - these apply to all configured drivers
-Per-axis values will override these
-*/
-#define TMC2130_STEALTHCHOP         0  // Enable extremely quiet stepping
-#define TMC2130_INTERPOLATE_256  1  // Enable internal driver microstep interpolation
-#define TMC2130_STALLGUARD          0  // Sensorless homing sensitivity (between -63 and +64)
-
-/** PWM values for chopper tuning
-only change if you know what you're doing
-*/
-#define TMC2130_PWM_AMPL          255
-#define TMC2130_PWM_GRAD            1
-#define TMC2130_PWM_AUTOSCALE    1
-#define TMC2130_PWM_FREQ            2
-
-/**  Per-axis parameters
-
-To define different values for certain parameters on each axis,
-append either _X, _Y, _Z, _EXT0, _EXT1 or _EXT2
-to the name of the global parameter.
-
-Examples for the X axis:
-
-#define TMC2130_STEALTHCHOP_X         1
-#define TMC2130_INTERPOLATE_256_X  true
-*/
-
-/** Minimum speeds for stall detection.
-
-These values may need to be adjusted if SENSORLESS_HOMING is enabled,
-but endstops trigger prematurely or don't trigger at all.
-The exact value is dependent on the duration of one microstep,
-but good approximations can be determined by experimentation.
-*/
-#define TMC2130_TCOOLTHRS_X 300
-#define TMC2130_TCOOLTHRS_Y 300
-#define TMC2130_TCOOLTHRS_Z 300
 
 // ################# Misc. settings ##################
 
@@ -581,6 +530,7 @@ WARNING: Servos can draw a considerable amount of current. Make sure your system
 #define SDSUPPORT 1
 #undef SDCARDDETECT
 #define SDCARDDETECT -1
+#undef SDCARDDETECTINVERTED
 #define SDCARDDETECTINVERTED 0
 #endif
 #define SD_EXTENDED_DIR 1 /** Show extended directory including file length. Don't use this with Pronterface! */
@@ -605,14 +555,14 @@ WARNING: Servos can draw a considerable amount of current. Make sure your system
 #define LANGUAGE_CZ_ACTIVE 0
 #define LANGUAGE_PL_ACTIVE 0
 #define LANGUAGE_TR_ACTIVE 0
-#define UI_PRINTER_NAME "R2D2"
+#define UI_PRINTER_NAME "R2D2-DRV8825"
 #define UI_PRINTER_COMPANY "Print3r"
 #define UI_PAGES_DURATION 4000
 #define UI_SPEEDDEPENDENT_POSITIONING 0
 #define UI_DISABLE_AUTO_PAGESWITCH 1
-#define UI_AUTORETURN_TO_MENU_AFTER 30000
+#define UI_AUTORETURN_TO_MENU_AFTER 60000
 #define FEATURE_UI_KEYS 0
-#define UI_ENCODER_SPEED 2
+#define UI_ENCODER_SPEED 1
 #define UI_REVERSE_ENCODER 1
 #define UI_KEY_BOUNCETIME 10
 #define UI_KEY_FIRST_REPEAT 500
@@ -757,11 +707,11 @@ Values must be in range 1..255
     "xStepsPerMM": 80,
     "yStepsPerMM": 80,
     "zStepsPerMM": 800,
-    "xInvert": "0",
+    "xInvert": "1",
     "x2Invert": 0,
     "xInvertEnable": 0,
     "eepromMode": 1,
-    "yInvert": "0",
+    "yInvert": "1",
     "y2Invert": 0,
     "yInvertEnable": 0,
     "zInvert": "0",
@@ -926,8 +876,8 @@ Values must be in range 1..255
     "sendWaits": "1",
     "ackWithLineNumber": "1",
     "killMethod": 1,
-    "useAdvance": "1",
-    "useQuadraticAdvance": "1",
+    "useAdvance": "0",
+    "useQuadraticAdvance": "0",
     "powerInverting": 0,
     "mirrorX": 0,
     "mirrorXMotor": {
@@ -976,14 +926,14 @@ Values must be in range 1..255
     "extrudeMaxLength": 160,
     "homeOrder": "HOME_ORDER_XYZ",
     "featureController": 11,
-    "uiPrinterName": "R2D2",
+    "uiPrinterName": "R2D2-DRV8825",
     "uiPrinterCompany": "Print3r",
     "uiPagesDuration": 4000,
     "uiHeadline": "",
     "uiDisablePageswitch": "1",
-    "uiAutoReturnAfter": 30000,
+    "uiAutoReturnAfter": 60000,
     "featureKeys": "0",
-    "uiEncoderSpeed": 2,
+    "uiEncoderSpeed": 1,
     "uiReverseEncoder": "1",
     "uiKeyBouncetime": 10,
     "uiKeyFirstRepeat": 500,
@@ -1367,7 +1317,7 @@ Values must be in range 1..255
     "raiseZOnToolchange": 0,
     "distortionLimitTo": 2,
     "automaticPowerup": 0,
-    "hasTMC2130": "1",
+    "hasTMC2130": "0",
     "TMC2130Sensorless": "0",
     "TMC2130Steathchop": "0",
     "TMC2130Interpolate256": "1",
@@ -1397,6 +1347,9 @@ Values must be in range 1..255
     "microstepE0": 16,
     "microstepE1": 16,
     "microstepE2": 16,
+    "parkPosX": 0,
+    "parkPosY": 0,
+    "parkPosZ": 10,
     "uiAnimation": "0",
     "uiPresetBedTempPLA": 60,
     "uiPresetBedABS": 110,
@@ -1411,7 +1364,7 @@ Values must be in range 1..255
     "hasUser1": false,
     "hasUser2": false,
     "numExtruder": 1,
-    "version": 100,
+    "version": 100.2,
     "primaryPortName": ""
 }
 ========== End configuration string ==========
