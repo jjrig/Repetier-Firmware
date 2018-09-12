@@ -107,8 +107,8 @@
 #define EXT0_PID_I 2
 #define EXT0_PID_D 40
 #define EXT0_PID_MAX 255
-#define EXT0_ADVANCE_K 1
-#define EXT0_ADVANCE_L 1
+#define EXT0_ADVANCE_K 0
+#define EXT0_ADVANCE_L 0
 #define EXT0_ADVANCE_BACKLASH_STEPS 0
 #define EXT0_WAIT_RETRACT_TEMP 150
 #define EXT0_WAIT_RETRACT_UNITS 0
@@ -448,7 +448,7 @@ It also can add a delay to wait for spindle to run on full speed.
 #define KEEP_ALIVE_INTERVAL 2000
 #define WAITING_IDENTIFIER "wait"
 #define ECHO_ON_EXECUTE 1
-#define EEPROM_MODE 1
+#define EEPROM_MODE 2
 #undef PS_ON_PIN
 #define PS_ON_PIN ORIG_PS_ON_PIN
 #define JSON_OUTPUT 0
@@ -738,8 +738,8 @@ Values must be in range 1..255
             "pidP": 7,
             "pidI": 2,
             "pidD": 40,
-            "advanceK": 1,
-            "advanceL": 1,
+            "advanceK": 0,
+            "advanceL": 0,
             "waitRetractTemp": 150,
             "waitRetractUnits": 0,
             "waitRetract": 0,
