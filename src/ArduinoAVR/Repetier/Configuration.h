@@ -27,7 +27,7 @@
    to see and change the data. You can also upload it to newer/older versions. The system
    will silently add new options, so compilation continues to work.
 
-   This file is optimized for version 1.0.0dev
+   This file is optimized for version 1.0.3dev
    generator: http://www.repetier.com/firmware/dev/
 
    If you are in doubt which named functions use which pins on your board, please check the
@@ -81,13 +81,13 @@
 #define EXT0_X_OFFSET 0
 #define EXT0_Y_OFFSET 0
 #define EXT0_Z_OFFSET 0
-#define EXT0_STEPS_PER_MM 200
+#define EXT0_STEPS_PER_MM 418.5
 #define EXT0_TEMPSENSOR_TYPE 8
 #define EXT0_TEMPSENSOR_PIN TEMP_0_PIN
 #define EXT0_HEATER_PIN HEATER_0_PIN
 #define EXT0_STEP_PIN ORIG_E0_STEP_PIN
 #define EXT0_DIR_PIN ORIG_E0_DIR_PIN
-#define EXT0_INVERSE 0
+#define EXT0_INVERSE 1
 #define EXT0_ENABLE_PIN ORIG_E0_ENABLE_PIN
 #define EXT0_ENABLE_ON 0
 #define EXT0_MIRROR_STEPPER 0
@@ -317,7 +317,7 @@ It also can add a delay to wait for spindle to run on full speed.
 #define DISABLE_Y 0
 #define DISABLE_Z 0
 #define DISABLE_E 0
-#define INVERT_X_DIR 1
+#define INVERT_X_DIR 0
 #define INVERT_X2_DIR 0
 #define INVERT_Y_DIR 1
 #define INVERT_Y2_DIR 0
@@ -395,15 +395,15 @@ It also can add a delay to wait for spindle to run on full speed.
 #define STEP_DOUBLER_FREQUENCY 12000
 #define ALLOW_QUADSTEPPING 1
 #define DOUBLE_STEP_DELAY 1 // time in microseconds
-#define MAX_ACCELERATION_UNITS_PER_SQ_SECOND_X 1000
+#define MAX_ACCELERATION_UNITS_PER_SQ_SECOND_X 800
 #define MAX_ACCELERATION_UNITS_PER_SQ_SECOND_Y 800
 #define MAX_ACCELERATION_UNITS_PER_SQ_SECOND_Z 100
-#define MAX_TRAVEL_ACCELERATION_UNITS_PER_SQ_SECOND_X 1000
+#define MAX_TRAVEL_ACCELERATION_UNITS_PER_SQ_SECOND_X 800
 #define MAX_TRAVEL_ACCELERATION_UNITS_PER_SQ_SECOND_Y 800
 #define MAX_TRAVEL_ACCELERATION_UNITS_PER_SQ_SECOND_Z 100
 #define INTERPOLATE_ACCELERATION_WITH_Z 0
 #define ACCELERATION_FACTOR_TOP 100
-#define MAX_JERK 10
+#define MAX_JERK 16
 #define MAX_ZJERK 0.3
 #define PRINTLINE_CACHE_SIZE 16
 #define MOVE_CACHE_LOW 10
@@ -448,7 +448,7 @@ It also can add a delay to wait for spindle to run on full speed.
 #define KEEP_ALIVE_INTERVAL 2000
 #define WAITING_IDENTIFIER "wait"
 #define ECHO_ON_EXECUTE 1
-#define EEPROM_MODE 2
+#define EEPROM_MODE 1
 #undef PS_ON_PIN
 #define PS_ON_PIN ORIG_PS_ON_PIN
 #define JSON_OUTPUT 0
@@ -707,7 +707,7 @@ Values must be in range 1..255
     "xStepsPerMM": 160,
     "yStepsPerMM": 160,
     "zStepsPerMM": 800,
-    "xInvert": "1",
+    "xInvert": "0",
     "x2Invert": 0,
     "xInvertEnable": 0,
     "eepromMode": 1,
@@ -731,7 +731,7 @@ Values must be in range 1..255
             "heaterPin": "HEATER_0_PIN",
             "maxFeedrate": 50,
             "startFeedrate": 20,
-            "invert": "0",
+            "invert": "1",
             "invertEnable": "0",
             "acceleration": 5000,
             "watchPeriod": 1,
@@ -743,7 +743,7 @@ Values must be in range 1..255
             "waitRetractTemp": 150,
             "waitRetractUnits": 0,
             "waitRetract": 0,
-            "stepsPerMM": 200,
+            "stepsPerMM": 418.5,
             "coolerPin": -1,
             "coolerSpeed": 255,
             "selectCommands": "",
@@ -791,8 +791,8 @@ Values must be in range 1..255
     "driveSystem": 0,
     "xMaxSpeed": 200,
     "xHomingSpeed": 40,
-    "xTravelAcceleration": 1000,
-    "xPrintAcceleration": 1000,
+    "xTravelAcceleration": 800,
+    "xPrintAcceleration": 800,
     "yMaxSpeed": 200,
     "yHomingSpeed": 40,
     "yTravelAcceleration": 800,
@@ -866,7 +866,7 @@ Values must be in range 1..255
     "stepDoublerFrequency": 12000,
     "allowQuadstepping": "1",
     "doubleStepDelay": 1,
-    "maxJerk": 10,
+    "maxJerk": 16,
     "maxZJerk": 0.3,
     "moveCacheSize": 16,
     "moveCacheLow": 10,
