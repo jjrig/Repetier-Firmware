@@ -82,13 +82,13 @@
 #define EXT0_X_OFFSET 0
 #define EXT0_Y_OFFSET 0
 #define EXT0_Z_OFFSET 0
-#define EXT0_STEPS_PER_MM 320
+#define EXT0_STEPS_PER_MM 418.5
 #define EXT0_TEMPSENSOR_TYPE 8
 #define EXT0_TEMPSENSOR_PIN TEMP_0_PIN
 #define EXT0_HEATER_PIN HEATER_0_PIN
 #define EXT0_STEP_PIN ORIG_E0_STEP_PIN
 #define EXT0_DIR_PIN ORIG_E0_DIR_PIN
-#define EXT0_INVERSE 0
+#define EXT0_INVERSE 1
 #define EXT0_ENABLE_PIN ORIG_E0_ENABLE_PIN
 #define EXT0_ENABLE_ON 0
 #define EXT0_MIRROR_STEPPER 0
@@ -319,7 +319,7 @@ It also can add a delay to wait for spindle to run on full speed.
 #define DISABLE_Y 0
 #define DISABLE_Z 0
 #define DISABLE_E 0
-#define INVERT_X_DIR 0
+#define INVERT_X_DIR 1
 #define INVERT_X2_DIR 0
 #define INVERT_Y_DIR 0
 #define INVERT_Y2_DIR 0
@@ -336,7 +336,9 @@ It also can add a delay to wait for spindle to run on full speed.
 #define X_MIN_POS 0
 #define Y_MIN_POS 0
 #define Z_MIN_POS 0
-
+#define PARK_POSITION_X 0 
+#define PARK_POSITION_Y 10 
+#define PARK_POSITION_Z_RAISE 10
 
 #define DISTORTION_CORRECTION 0
 #define DISTORTION_CORRECTION_POINTS 5
@@ -448,7 +450,7 @@ It also can add a delay to wait for spindle to run on full speed.
 #define TMC2130_EXT2_CS_PIN -1
 
 // Per-axis current setting in mA { X, Y, Z, E0, E1, E2}
-#define MOTOR_CURRENT { 700,700,700,700,700,700 }
+#define MOTOR_CURRENT { 800,800,700,700,700,700 }
 
 /**  Global settings - these apply to all configured drivers
 Per-axis values will override these
@@ -745,7 +747,7 @@ Values must be in range 1..255
 
 #endif
 
-/* Below you will find the configuration string, that created this Configuration.h
+    /* Below you will find the configuration string, that created this Configuration.h
 
 ========== Start configuration string ==========
 {
